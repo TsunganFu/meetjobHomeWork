@@ -1,0 +1,76 @@
+/* 20220804_homework_100240711傅從安 */
+
+body{
+	margin:0 auto; /* 沒有外距 */
+	height:100%;
+}
+
+#wrapper{
+	min-height:100%; /* 整個區塊高度為100% */
+	margin-bottom: -100px; /* 等一下footer的高度是100px */
+}
+
+#banner{
+	height:70px;
+	width:100%;
+}
+
+#menu{
+	height:50px;
+	width:100%;
+	/* 背景顏色效果線性漸層,Google Chrome 與 Apple Safari 使用 -webkit-,Mozilla FireFox 使用 -moz-,Opera 使用 -o- */
+	background: -webkit-radial-gradient(pink,#DB7318);
+	color:#36BF36; /*區塊內的文字為常春藤綠色*/
+}
+
+#content{
+	width:100%;
+	min-height:300px;
+	background: -webkit-radial-gradient(circle,#C0C0C0,#FFFAFA);
+}
+
+#footer{
+	width:100%;
+	height:100px;
+	/* 背景顏色效果線性漸層,Google Chrome 與 Apple Safari 使用 -webkit-,Mozilla FireFox 使用 -moz-,Opera 使用 -o- */
+	background: -webkit-radial-gradient(#808080,#000000);
+	color:#36BF36; /*區塊內的文字為常春藤綠色*/
+
+}
+
+/* class 的定義是以.表示此樣式提供給多個div來使用 */
+.info{
+	width:18%;
+	/* border:2px solid #ff0000; */
+	border:2px dashed #ff0000; /* 邊框虛線 */
+	height:200px;
+	float:left; /* 設定此區塊為浮塊,會浮起來喔!!可靠左left&可靠右right */
+
+	/*
+	padding 內部距離,padding-top 上面 left左 right右 bottom底
+	padding:上 右 下 左;  padding:上下 左右; padding: 上 左右 下;
+	*/
+	padding:20px; /* 上下左右都20px */
+
+	/* margen 外部距離,內容同上padding */
+	margin:20px;
+}
+
+.communication{
+    width:66px;
+	border:1px solid #FFFFFF;
+	height:56px;
+    margin-right:10px;
+    margin-top:10px;
+    float:right;
+}
+
+.logo{
+    width:345px;
+	border:1px solid #FFFFFF;
+	height:60px;
+    margin-left:3%;
+    float:left;
+}
+
+
