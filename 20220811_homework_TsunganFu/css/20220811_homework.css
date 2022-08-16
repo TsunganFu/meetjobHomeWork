@@ -1,0 +1,144 @@
+/* 自己練習 */
+
+#banner{
+	height:70px;
+	width:100%;
+	background-color:#DCDCDC;
+}
+
+#logo{
+   float: left;
+   margin-left: 2em;
+   margin-top: -5px;
+}
+
+#logo img{
+   width: 100%;
+}
+
+#fb{
+   float: right;
+   margin-right: 1em;
+   margin-top: 10px;
+}
+
+#fb img{
+   width: 50%;
+}
+
+#ig{
+   float: right;
+   margin-right: 1em;
+   margin-top: 10px;
+}
+
+#ig img{
+   width: 50%;
+}
+
+#menu{
+	height:50px;
+	width:100%;
+	background-color:#DB7318;
+}
+
+#menu a{
+	color: #FFEBCD; /*區塊內的文字為杏仁白色*/
+	text-decoration: none; /*不要有底線*/
+	font-weight: bold; /*字型為粗體*/
+}
+
+#menu ul{
+	margin-left: 18%;
+	color: #ffffff;
+	padding-top: 10px;
+	font-size: 22px;
+}
+
+#menu li{
+	list-style: none;  /*項目符號 不要出來*/
+	float: left;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+#content{
+	width:100%;
+	min-height:400px;
+}
+
+#left{
+	width: 65%;
+	min-height:400px;
+	float: left;
+}
+
+#left li{
+	font-size: 20px;
+	font-family: Arial,adobe黑體,微軟正黑體;
+}
+
+#left p{
+	font-size: 32px;
+	font-family: Arial,adobe黑體,微軟正黑體;
+}
+
+#left-top{
+	width: 100%;
+	min-height:50%;
+	background-color:#E6C3C3;
+}
+
+#left-down{
+	width: 100%;
+	min-height:50%;
+	background-color:#66FFE6;
+}
+
+#left-down img{
+    width: 30%;
+	height:22%;
+	padding-left: 2%;
+}
+
+#left-down-text{
+    border: 2px solid ##4D3900;
+    float: right;
+    margin-right: 50px;
+    margin-top: -150px;
+}
+
+#right{
+	width: 35%;
+	min-height:400px;
+	background-color:#F0E68C;
+	float: left;
+}
+
+#right img{
+	padding-top: 5%;
+	padding-left: 5%;
+	width:80%;
+	height: 30%;
+}
+
+#right p{
+	text-align: center;
+	font-weight: bold;
+	color: #ff0000;
+}
+
+
+#footer{
+	width:100%;
+	height:100px;
+	background-color:#000000;
+	color:#ffffff; /*區塊內的文字為白色*/
+	text-align: center; /*對齊方式:置中*/
+	clear: both; /*清除float效果*/
+}
+
+#footer span{
+	font-size: 20px;
+	
+}
