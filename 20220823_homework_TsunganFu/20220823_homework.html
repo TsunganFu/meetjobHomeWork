@@ -1,0 +1,520 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>下拉式選單</title>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+	<script src="js/jquery.min.js"></script>
+
+  <style>
+
+    #logo{
+      width: 100%;
+      height: 70px;
+      background-color: #87CEEB;
+    }
+
+    .logo_info{
+      height:70px;
+      float:left;
+      margin: 5px;
+    }
+
+    #menu{
+      width: 100%;
+      height: 120px;
+      background-color: #808080;
+    }
+
+    #menulist{
+      position: absolute; /*定位:fix 固定 absolute 依父位置做絕對位置 */
+      height: 120px;
+    }
+
+    #menulist , #menulist ul{
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #menulist li{
+      border-right: 1px solid #ffffff;
+      float: left;
+      background-color: #555;
+    }
+
+    #menulist a{
+      color: #ffffff;
+      display: block;
+      text-decoration: none;
+      width: 180px;
+    }
+
+    #menulist li ul{
+      position: absolute; /* 位置是絕對位置 */
+      left: auto; /* 對於絕對位置元素,會依內容需要的寬度來設置 */
+      width: 180px;
+    }
+
+    #pic{
+      width: 100%;
+      height: 800px;
+      background-color: #DCDCDC;
+      position: relative;
+      top: 120px;
+    }
+
+    #pic p{
+      color: #B22222;
+      font-weight: bold;
+    }
+
+    #ASUS{
+      width: 99.7%;
+      height: 200px;
+      border:2px solid #ffffff;
+     }
+
+
+    #SONY{
+      width: 99.7%;
+      height: 200px;
+      border:2px solid #ffffff;
+     }
+
+    #GOOGLE{
+      width: 99.7%;
+      height: 180px;
+      border:2px solid #ffffff;
+     }
+
+    #SAMSUNG{
+      width: 99.7%;
+      height: 200px;
+      border:2px solid #ffffff;
+     }
+
+     .phone_info{
+      width:7%;
+      border:1px solid #000000;
+      height:100px;
+      float:left;
+      padding: 2px;
+      margin: 2px;
+      margin-top: -15px;
+     }
+
+     #titleline{
+      width: 100%;
+      height: 200px;
+      background-color: #99FF4D;
+      position: relative;
+      top: 120px;
+    }
+
+   .titleline_info{
+   width:22%;
+   border:2px dashed #ff0000;
+   height: 140px;
+   float:left; 
+   padding:10px; 
+   margin:10px;
+}
+
+    #age{
+      width: 100%;
+      height: 50px;
+      background-color: #E6D933;
+      position: relative;
+      top: 120px;
+    }
+
+    .active{
+      background: #ff0000;
+    }
+
+  </style>
+
+   
+
+</head>
+
+<body>
+   <div id="logo">
+      <div class="logo_info">
+         <a href="https://about.google/?fg=1&utm_source=google-&utm_medium=referral&utm_campaign=hp-header" target="_blank"><img src="img/google.jpg"></a>
+      </div>
+      <div class="logo_info">
+         <a href="https://www.android.com/intl/zh-TW_tw/" target="_blank"><img src="img/android.jpg"></a>
+      </div>
+      <div class="logo_info">
+         <a href="https://www.asus.com/tw/" target="_blank"><img src="img/asus.jpg"></a>
+      </div>
+      <div class="logo_info">
+         <a href="https://store.sony.com.tw/" target="_blank"><img src="img/sony.jpg"></a>
+      </div>
+      <div class="logo_info">
+         <a href="https://www.samsung.com/tw/" target="_blank"><img src="img/samsung.jpg"></a>
+      </div>
+   </div>
+
+   <div id="menu">
+       <ul id="menulist">
+
+          <li><a href="#">ASUS 5G手機(官網)</a>
+              <ul class="submenu">
+                 <li><a href="https://www.asus.com/tw/Mobile/Phones/ROG-Phone/">ROG Phone 5&6 Series</a></li>
+                 <li><a href="https://www.asus.com/tw/Mobile/Phones/ZenFone/Zenfone-9/">Zenfone 9</a></li>
+                 <li><a href="https://www.asus.com/tw/Mobile/Phones/ZenFone/Zenfone-8/">Zenfone 8</a></li>
+              </ul>
+          </li>
+
+           <li><a href="#">SONY 5G手機(官網)</a>
+              <ul class="submenu">
+                 <li><a href="https://store.sony.com.tw/xperia/productdetail.aspx?id=145#/top">Xperia PRO-I</a></li>
+                 <li><a href="https://store.sony.com.tw/xperia/productdetail.aspx?id=148#/top">Xperia 1 IV</a></li>          
+                 <li><a href="https://store.sony.com.tw/xperia/productdetail.aspx?id=140#/top">Xperia 1 III</a></li>
+                 <li><a href="https://store.sony.com.tw/xperia/productdetail.aspx?id=139#/top">Xperia 5 III</a></li>
+                 <li><a href="https://store.sony.com.tw/xperia/productdetail.aspx?id=149#/top">Xperia 10 IV</a></li>  
+              </ul>
+           </li>
+
+           <li><a href="#">Google 5G手機(官網)</a>
+              <ul class="submenu">
+                 <li><a href="https://store.google.com/tw/product/pixel_6_pro?hl=zh-TW">Pixel 6 Pro</a></li>
+                 <li><a href="https://store.google.com/tw/product/pixel_6?hl=zh-TW">Pixel 6</a></li>
+                 <li><a href="https://store.google.com/tw/product/pixel_6a?hl=zh-TW">Pixel 6a</a></li>
+                 
+              </ul>
+           </li>
+
+          <li><a href="#">SAMSUNG 5G手機(官網)</a>
+              <ul class="submenu">
+                 <li><a href="https://www.samsung.com/tw/smartphones/galaxy-z/">Galaxy Z Series</a></li>
+                 <li><a href="https://www.samsung.com/tw/smartphones/galaxy-s/">Galaxy S Series</a></li>
+                 <li><a href="https://www.samsung.com/tw/smartphones/galaxy-a/">Galaxy A Series</a></li>
+                 <li><a href="https://www.samsung.com/tw/smartphones/galaxy-m/">Galaxy M Series</a></li>
+              </ul>
+           </li>
+
+          <li><a href="#">聯絡我們</a></li>
+
+        </ul> 
+
+   <div id="pic">
+       <div id="ASUS">
+        <p>ASUS 5G手機</p>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW76-A900F9B12?fq=/S/DYAW76" target="_blank"><img src="img/ASUS ROG Phone 6 Pro 18G／512G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW76-A900F9B12?fq=/S/DYAW76" target="_blank">ROG Phone 6 Pro 18G／512G $37990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW74-A900F94M4?fq=/S/DYAW74" target="_blank"><img src="img/ASUS ROG Phone 6 16G／512G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW74-A900F94M4?fq=/S/DYAW74" target="_blank">ROG Phone 6 16G／512G $33990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW75-A900F9B16?fq=/S/DYAW75" target="_blank"><img src="img/ASUS ROG Phone 6 12G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW75-A900F9B16?fq=/S/DYAW75" target="_blank">ROG Phone 6 12G／256G $29990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW5Q-A900F9AI3?fq=/S/DYAW5Q" target="_blank"><img src="img/ASUS ROG Phone 5s 12G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW5Q-A900F9AI3?fq=/S/DYAW5Q" target="_blank">ROG Phone 5s 12G／256G $24910</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW7C-A900FBVSH?fq=/S/DYAW7C" target="_blank"><img src="img/ASUS Zenfone 9 16G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW7C-A900FBVSH?fq=/S/DYAW7C" target="_blank">Zenfone 9 16G／256G $25990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW7B-A900FBIXO?fq=/S/DYAW7B" target="_blank"><img src="img/ASUS Zenfone 9 8G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW7B-A900FBIXO?fq=/S/DYAW7B" target="_blank">Zenfone 9 8G／256G $21990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW77-A900FBIRV?fq=/S/DYAW7A" target="_blank"><img src="img/ASUS Zenfone 9 8G／128G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW77-A900FBIRV?fq=/S/DYAW7A" target="_blank">Zenfone 9 8G／128G $19990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW3X-A900BD9RH?fq=/S/DYAW3Y" target="_blank"><img src="img/ASUS Zenfone 8 Flip 8G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW3X-A900BD9RH?fq=/S/DYAW3Y" target="_blank">Zenfone 8 Flip 8G／256G $16990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW3X-A900BUH8U?fq=/S/DYAW3X" target="_blank"><img src="img/ASUS Zenfone 8 Flip 8G／128G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW3X-A900BUH8U?fq=/S/DYAW3X" target="_blank">Zenfone 8 Flip 8G／128G $14319</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW43-1900EYRDW?fq=/S/DYAW43" target="_blank"><img src="img/ASUS Zenfone 8  16G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW43-1900EYRDW?fq=/S/DYAW43" target="_blank">Zenfone 8 16G／256G $18450</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/store/DYAW42" target="_blank"><img src="img/ASUS Zenfone 8  12G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/store/DYAW42" target="_blank">Zenfone 8 12G／256G $16888</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW3Z-A900BD4B7?fq=/S/DYAW41" target="_blank"><img src="img/ASUS Zenfone 8  8G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW3Z-A900BD4B7?fq=/S/DYAW41" target="_blank">Zenfone 8 8G／256G $13680</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW3Z-A900BD53C?fq=/S/DYAW3W" target="_blank"><img src="img/ASUS Zenfone 8  8G／128G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW3Z-A900BD53C?fq=/S/DYAW3W" target="_blank">Zenfone 8 8G／128G $12480</a>
+         </div>
+
+       </div>
+
+       <div id="SONY">
+         <p>SONY 5G手機</p>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW4W-A900BYL0Z?fq=/S/DYAW4W" target="_blank"><img src="img/SONY Xperia PRO-I 12G／512G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW4W-A900BYL0Z?fq=/S/DYAW4W" target="_blank">Xperia PRO-I 12G／512G $39990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW6M-A900F25HY?fq=/S/DYAW6M" target="_blank"><img src="img/SONY Xperia 1 IV 12G／512G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW6M-A900F25HY?fq=/S/DYAW6M" target="_blank">Xperia 1 IV 12G／512G $37990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW6O-1900F2YDO?fq=/S/DYAW6O" target="_blank"><img src="img/SONY Xperia 1 IV 12G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW6O-1900F2YDO?fq=/S/DYAW6O" target="_blank">Xperia 1 IV 12G／256G $34990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW3U-A900F25XO?fq=/S/DYAW3U" target="_blank"><img src="img/SONY Xperia 1 III 12G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW3U-A900F25XO?fq=/S/DYAW3U" target="_blank">Xperia 1 III 12G／256G $25480</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW4G-A900F1U5O?fq=/S/DYAW4G" target="_blank"><img src="img/SONY Xperia 5 III 8G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW4G-A900F1U5O?fq=/S/DYAW4G" target="_blank">Xperia 5 III 8G／256G $21150</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAW6Y-1900FE8T4?fq=/S/DYAW6Y" target="_blank"><img src="img/SONY Xperia 10 IV 6G／128G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAW6Y-1900FE8T4?fq=/S/DYAW6Y" target="_blank">Xperia 10 IV 6G／128G $12990</a>
+         </div>
+          
+       </div>
+
+       <div id="GOOGLE">
+          <p>GOOGLE 5G手機</p>
+       
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAT0X-A900C7HVZ?fq=/S/DYAT0X" target="_blank"><img src="img/GOOGLE Pixel 6 Pro 12G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAT0X-A900C7HVZ?fq=/S/DYAT0X" target="_blank">Pixel 6 Pro 12G／256G $26760</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAT0W-1900ERJTT?fq=/S/DYAT0W" target="_blank"><img src="img/GOOGLE Pixel 6 Pro 12G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAT0W-1900ERJTT?fq=/S/DYAT0W" target="_blank">Pixel 6 Pro 12G／128G $24535</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAT0V-A900BUEUS?fq=/S/DYAT0V" target="_blank"><img src="img/GOOGLE Pixel 6 8G／256G.jpg"></a>
+            <a href="https://24h.pchome.com.tw/prod/DYAT0V-A900BUEUS?fq=/S/DYAT0V" target="_blank">Pixel 6 8G／256G $19650</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAT0U-A900BXA6B?fq=/S/DYAT0U" target="_blank"><img src="img/GOOGLE Pixel 6 8G／256G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYAT0U-A900BXA6B?fq=/S/DYAT0U" target="_blank">Pixel 6 8G／128G $14880</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYAT1D-A900FB7HH?fq=/S/DYAT1D" target="_blank"><img src="img/GOOGLE Pixel 6a 6G／128G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYAT1D-A900FB7HH?fq=/S/DYAT1D" target="_blank">Pixel 6a 6G／128G $13990</a>
+         </div>
+
+       </div>
+
+       <div id="SAMSUNG">
+          <p>SAMSUNG 5G手機</p>
+
+          <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALLQ-A900FE1B3?fq=/S/DYALLQ" target="_blank"><img src="img/SAMSUNG Galaxy Z Fold4 12G／512G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALLQ-A900FE1B3?fq=/S/DYALLQ" target="_blank">Galaxy Z Fold4 12G／512G $60888</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALLQ-A900FE1B1?fq=/S/DYALLQ" target="_blank"><img src="img/SAMSUNG Galaxy Z Fold4 12G／256G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALLQ-A900FE1B1?fq=/S/DYALLQ" target="_blank">Galaxy Z Fold4 12G／256G $56888</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALLP-A900FE1AZ?fq=/S/DYALLP" target="_blank"><img src="img/SAMSUNG Galaxy Z Flip4 8G／256G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALLP-A900FE1AZ?fq=/S/DYALLP" target="_blank">Galaxy Z Flip4 8G／256G $32888</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALLP-A900FDUBD?fq=/S/DYALLP" target="_blank"><img src="img/SAMSUNG Galaxy Z Flip4 8G／128G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALLP-A900FDUBD?fq=/S/DYALLP" target="_blank">Galaxy Z Flip4 8G／128G $30888</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALIG-A900ER0DE?fq=/S/DYALI4" target="_blank"><img src="img/SAMSUNG Galaxy S22 Ultra 12G／512G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALIG-A900ER0DE?fq=/S/DYALI4" target="_blank">Galaxy S22 Ultra 12G／512G $33990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALKT-A900F8JGS?fq=/S/DYALI5" target="_blank"><img src="img/SAMSUNG Galaxy S22 Ultra 12G／256G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALKT-A900F8JGS?fq=/S/DYALI5" target="_blank">Galaxy S22 Ultra 12G／256G $30990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALKR-A900F9ITT?fq=/S/DYALI6" target="_blank"><img src="img/SAMSUNG Galaxy S22 Plus 8G／256G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALKR-A900F9ITT?fq=/S/DYALI6" target="_blank">Galaxy S22 Plus 8G／256G $25990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALI9-A900EOPP7?fq=/S/DYALI9" target="_blank"><img src="img/SAMSUNG Galaxy S22 Plus 8G／128G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALI9-A900EOPP7?fq=/S/DYALI9" target="_blank">Galaxy S22 Plus 8G／128G $18990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALIY-A900F0UQ7?fq=/S/DYALIY" target="_blank"><img src="img/SAMSUNG Galaxy S21 FE 5G 8G／256G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALIY-A900F0UQ7?fq=/S/DYALIY" target="_blank">Galaxy S21 FE 5G 8G／256G $15390</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALIU-A900EQQL0?fq=/S/DYALIU" target="_blank"><img src="img/SAMSUNG Galaxy A53 8G／256G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALIU-A900EQQL0?fq=/S/DYALIU" target="_blank">Galaxy A53 8G／256G $10880</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALIX-A900F4UOG?fq=/S/DYALIT" target="_blank"><img src="img/SAMSUNG Galaxy A53 8G／128G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALIX-A900F4UOG?fq=/S/DYALIT" target="_blank">Galaxy A53 8G／256G $9880</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALKD-A900EX9AQ?fq=/S/DYALKD" target="_blank"><img src="img/SAMSUNG Galaxy M53 8G／128G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALKD-A900EX9AQ?fq=/S/DYALKD" target="_blank">Galaxy M53 8G／128G $10990</a>
+         </div>
+
+         <div class="phone_info">
+            <a href="https://24h.pchome.com.tw/prod/DYALLJ-A900FAT1O?fq=/S/DYALLJ" target="_blank"><img src="img/SAMSUNG Galaxy XCover 6 Pro 6G／128G.jpg">
+            <a href="https://24h.pchome.com.tw/prod/DYALLJ-A900FAT1O?fq=/S/DYALLJ" target="_blank">Galaxy XCover 6 Pro 6G／128G $19990</a>
+         </div>
+
+       </div>
+   </div>
+   <div id="titleline">
+      
+      <div class="titleline_info">
+         <button id="btn1">ASUS 5G手機開箱評測連結(折疊)</button>
+         <div id="pink" style="width:100%;height:100px;background-color:#FFC0CB">
+         <a href="https://ahui3c.com/121192/rog-phone-6" target="_blank">(1) ROG Phone 6 & 6 Pro</a>
+         <br>
+         <a href="https://ahui3c.com/102412/rog-phone-5s-pro" target="_blank">(2) ROG Phone 5s Pro</a>
+         <br>
+         <a href="https://ahui3c.com/122082/zenfone-9" target="_blank">(3) Zenfone 9</a>
+         <br>
+         <a href="https://ahui3c.com/98866/zenfone-8" target="_blank">(4) Zenfone 8 & 8 Flip</a>
+      </div>
+      <script>
+         $(document).ready(function(){
+            $("#btn1").click(function(){
+            //透明度0~1之間
+            $("#pink").slideToggle();
+            // .slideUp(); //收起來
+            // .slideDown() 放下
+           // .slideToggle();       
+           })
+          });
+      </script>
+      </div>
+
+      <div class="titleline_info">
+         <button id="btn2">SONY 5G手機開箱評測連結(折疊)</button>
+         <div id="orange" style="width:100%;height:100px;background-color:#FFA500">
+         <a href="https://ahui3c.com/110818/sony-xperia-pro-i" target="_blank">(1) Xperia PRO-I</a>
+         <br>
+         <a href="https://ahui3c.com/120947/sony-xperia-1-iv" target="_blank">(2) Xperia 1 IV</a>
+         <br>
+         <a href="https://ahui3c.com/101260/xperia-1-iii-zoom-pk" target="_blank">(3) Xperia 1 III</a>
+         <br>
+         <a href="https://ahui3c.com/105290/xperia-5-iii-2" target="_blank">(4) Xperia 5 III</a>
+         <br>
+         <a href="https://ahui3c.com/120494/xperia-10-iv" target="_blank">(5) Xperia 10 IV</a>
+      </div>
+      <script>
+         $(document).ready(function(){
+            $("#btn2").click(function(){
+            $("#orange").slideToggle();      
+           })
+          });
+      </script>
+      </div>
+
+      <div class="titleline_info">
+         <button id="btn3">GOOGLE 5G手機開箱評測連結(折疊)</button>
+         <div id="Yellow" style="width:100%;height:100px;background-color:#FFFF00">
+         <a href="https://ahui3c.com/109473/google-pixel-6" target="_blank">(1) Pixel 6 & 6 Pro</a>
+         <br>
+         <a href="https://www.kocpc.com.tw/archives/451869" target="_blank">(2) Pixel 6a</a>
+      </div>
+      <script>
+         $(document).ready(function(){
+            $("#btn3").click(function(){
+            $("#Yellow").slideToggle();    
+           })
+          });
+      </script>
+      </div>
+
+      <div class="titleline_info">
+         <button id="btn4">SAMSUNG 5G手機開箱評測連結(折疊)</button>
+         <div id="AquaBlue" style="width:100%;height:100px;background-color:#66FFE6">
+         <a href="https://www.bnext.com.tw/article/71328/samsung-galzxyz-fold-flip" target="_blank">(1) Galaxy Z Fold4&Flip4</a>
+         <br>
+         <a href="https://ahui3c.com/115093/s22" target="_blank">(2) Galaxy S22 Series</a>
+         <br>
+         <a href="https://axiang.cc/archives/73485" target="_blank">(3) Galaxy A53</a>
+         <br>
+         <a href="https://www.sogi.com.tw/articles/samsung_galaxy_m53_5g/6257912" target="_blank">(4) Galaxy M53</a>
+      </div>
+      <script>
+         $(document).ready(function(){
+            $("#btn4").click(function(){
+            $("#AquaBlue").slideToggle();    
+           })
+          });
+      </script>
+      </div>
+
+   </div>
+
+   <div id="age"></div>
+
+
+   <script>
+
+      $(document).ready(function(){
+
+         $("#menulist li ui").hide();
+         $("#menulist li").hover(
+            
+            function(){
+              $(this).find("ul").slideDown("fast");
+              $(this).find("a:first").slideDown("active");
+            },function(){
+              $(this).find(".submenu").fadeOut("fast");
+              $(this).find("a").removeClass("active");
+            }
+          )
+
+      });
+
+   </script>
+
+
+</body>
+</html>
