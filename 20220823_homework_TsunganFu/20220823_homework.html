@@ -1,53 +1,28 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
 	<meta charset="utf-8">
-	<title>下拉式選單</title>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-	<script src="js/jquery.min.js"></script>
+	<title>Android 5G手機購買資訊</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- <script src="js/jquery.min.js"></script>  -->
 
   <style>
 
-    #logo{
-      width: 100%;
-      height: 70px;
-      background-color: #87CEEB;
-    }
+    #logo{ width:100%; height:70px; background-color:#87CEEB; }
 
-    .logo_info{
-      height:70px;
-      float:left;
-      margin: 5px;
-    }
+    .logo_info{ height:70px; float:left; margin:5px; }
 
-    #menu{
-      width: 100%;
-      height: 120px;
-      background-color: #808080;
-    }
+    #menu{ width:100%; height:120px; background-color:#808080; }
 
-    #menulist{
-      position: absolute; /*定位:fix 固定 absolute 依父位置做絕對位置 */
-      height: 120px;
-    }
+    #menulist{ position: absolute;/*定位:fix 固定 absolute 依父位置做絕對位置*/ height:120px; }
 
-    #menulist , #menulist ul{
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
+    #menulist , #menulist ul{ list-style-type: none;/*沒有標誌，不使用編號*/ padding:0; margin:0; }
 
-    #menulist li{
-      border-right: 1px solid #ffffff;
-      float: left;
-      background-color: #555;
-    }
+    #menulist li{ border-right: 1px solid #ffffff;/*產生一個右邊的實心線邊框*/
+      float: left; background-color: #555; }
 
-    #menulist a{
-      color: #ffffff;
-      display: block;
-      text-decoration: none;
-      width: 180px;
-    }
+    #menulist a{ color: #ffffff; display: block;/*display: block,元素會以區塊方式呈現*/
+      text-decoration: none;/*無額外文字特效*/ width: 180px; }
 
     #menulist li ul{
       position: absolute; /* 位置是絕對位置 */
@@ -55,86 +30,98 @@
       width: 180px;
     }
 
-    #pic{
-      width: 100%;
-      height: 800px;
-      background-color: #DCDCDC;
-      position: relative;
-      top: 120px;
+    #pic{ width: 100%; min-height: 820px; background-color: #DCDCDC; position: relative; top: 120px; }
+
+    #pic p{ color: #B22222; font-weight: bold; }
+
+    #ASUS{ width: 99.7%; height: 205px; border:2px solid #ffffff; }
+
+
+    #SONY{ width: 99.7%; height: 205px; border:2px solid #ffffff; }
+
+    #GOOGLE{ width: 99.7%; height: 185px; border:2px solid #ffffff; }
+
+    #SAMSUNG{ width: 99.7%; height: 205px; border:2px solid #ffffff; }
+
+    .phone_info{ width:7%; border:1px solid #000000; height:100px; 
+      float:left; padding: 2px; margin: 2px; margin-top: -15px; }
+
+    #titleline{ width: 100%; min-height: 160px; background-color: #99FF4D; position: relative; top: 120px; }
+
+    .titleline_info{ width:22%; border:2px dashed #ff0000; height: 120px;
+     float:left; padding:10px; margin:10px; }
+
+    #agename{ width: 100%; height: 50px; background-color: #E6D933; position: relative; top: 120px; }
+
+    .agename_info{
+      width: 20%; border:2px dashed #ff0000;
+      font-size: 30px;
     }
 
-    #pic p{
-      color: #B22222;
-      font-weight: bold;
-    }
-
-    #ASUS{
-      width: 99.7%;
-      height: 200px;
-      border:2px solid #ffffff;
-     }
-
-
-    #SONY{
-      width: 99.7%;
-      height: 200px;
-      border:2px solid #ffffff;
-     }
-
-    #GOOGLE{
-      width: 99.7%;
-      height: 180px;
-      border:2px solid #ffffff;
-     }
-
-    #SAMSUNG{
-      width: 99.7%;
-      height: 200px;
-      border:2px solid #ffffff;
-     }
-
-     .phone_info{
-      width:7%;
-      border:1px solid #000000;
-      height:100px;
-      float:left;
-      padding: 2px;
-      margin: 2px;
-      margin-top: -15px;
-     }
-
-     #titleline{
-      width: 100%;
-      height: 200px;
-      background-color: #99FF4D;
-      position: relative;
-      top: 120px;
-    }
-
-   .titleline_info{
-   width:22%;
-   border:2px dashed #ff0000;
-   height: 140px;
-   float:left; 
-   padding:10px; 
-   margin:10px;
-}
-
-    #age{
-      width: 100%;
-      height: 50px;
-      background-color: #E6D933;
-      position: relative;
-      top: 120px;
-    }
-
-    .active{
-      background: #ff0000;
-    }
+    .active{ background: #ff0000; }
 
   </style>
 
-   
+   <script> /*子選單區塊*/
+      $(document).ready( function() {
+         $("#menulist li ui").hide();
+         $("#menulist li").hover(        
+            function(){
+              $(this).find("ul").slideDown("fast");
+              $(this).find("a:first").slideDown("active");
+            },function(){
+              $(this).find(".submenu").fadeOut("fast");
+              $(this).find("a").removeClass("active");
+            }
+          )
+      });
+   </script>
+
+   <script>
+         //摺疊收放區塊1
+         $(document).ready(function(){
+            $("#btn1").click(function(){
+            //透明度0~1之間
+            $("#pink").slideToggle();
+            // .slideUp(); //收起來
+            // .slideDown() 放下
+           // .slideToggle();       
+           })
+          });   
+
+         //摺疊收放區塊2
+         $(document).ready(function(){
+            $("#btn2").click(function(){
+            $("#orange").slideToggle();      
+           })
+          });
+
+         //摺疊收放區塊3
+         $(document).ready(function(){
+            $("#btn3").click(function(){
+            $("#Yellow").slideToggle();    
+           })
+          });
+         
+         //摺疊收放區塊4
+         $(document).ready(function(){
+            $("#btn4").click(function(){
+            $("#AquaBlue").slideToggle();    
+           })
+          });        
+   </script>
+
+   <script>
+      function showAge(){
+          var age = document.getElementById("age").value;
+          if (age >=18 && age <=50){
+             alert("符合");
+          }else{
+             alert("不符合")
+          }    
+      }
+   </script>
+      
 
 </head>
 
@@ -419,17 +406,7 @@
          <br>
          <a href="https://ahui3c.com/98866/zenfone-8" target="_blank">(4) Zenfone 8 & 8 Flip</a>
       </div>
-      <script>
-         $(document).ready(function(){
-            $("#btn1").click(function(){
-            //透明度0~1之間
-            $("#pink").slideToggle();
-            // .slideUp(); //收起來
-            // .slideDown() 放下
-           // .slideToggle();       
-           })
-          });
-      </script>
+      
       </div>
 
       <div class="titleline_info">
@@ -445,13 +422,7 @@
          <br>
          <a href="https://ahui3c.com/120494/xperia-10-iv" target="_blank">(5) Xperia 10 IV</a>
       </div>
-      <script>
-         $(document).ready(function(){
-            $("#btn2").click(function(){
-            $("#orange").slideToggle();      
-           })
-          });
-      </script>
+      
       </div>
 
       <div class="titleline_info">
@@ -461,13 +432,7 @@
          <br>
          <a href="https://www.kocpc.com.tw/archives/451869" target="_blank">(2) Pixel 6a</a>
       </div>
-      <script>
-         $(document).ready(function(){
-            $("#btn3").click(function(){
-            $("#Yellow").slideToggle();    
-           })
-          });
-      </script>
+      
       </div>
 
       <div class="titleline_info">
@@ -481,40 +446,17 @@
          <br>
          <a href="https://www.sogi.com.tw/articles/samsung_galaxy_m53_5g/6257912" target="_blank">(4) Galaxy M53</a>
       </div>
-      <script>
-         $(document).ready(function(){
-            $("#btn4").click(function(){
-            $("#AquaBlue").slideToggle();    
-           })
-          });
-      </script>
+      
       </div>
 
    </div>
 
-   <div id="age"></div>
-
-
-   <script>
-
-      $(document).ready(function(){
-
-         $("#menulist li ui").hide();
-         $("#menulist li").hover(
-            
-            function(){
-              $(this).find("ul").slideDown("fast");
-              $(this).find("a:first").slideDown("active");
-            },function(){
-              $(this).find(".submenu").fadeOut("fast");
-              $(this).find("a").removeClass("active");
-            }
-          )
-
-      });
-
-   </script>
-
+   <div id="agename">
+      <div class="agename_info">
+      年齡:<input type="text" id="age" name="age" />
+      <button onclick="showAge()">送出</button>
+      </div>
+   </div>
 
 </body>
 </html>
