@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="utf-8">
+	<title>Samsung 5G手機購買資訊</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <style>
+
+    #logo{ width:100%; height:70px; background-color:#ffffff; }
+
+    .logo_info{ height:70px; float:left; margin:1px;margin-left:10%; }
+
+    #menu{ width:100%; height:40px; background-color:#0047AB; }
+
+    #menulist{ position: absolute;left:135px;top:80px;/*定位:fix 固定 absolute 依父位置做絕對位置*/ 
+               height:100px;z-index:9999;/*此子選單會顯示在最上層*/}
+
+    #menulist , #menulist ul{ list-style-type:none;/*沒有標誌，不使用編號*/ padding:4px; margin:0; }
+
+    #menulist li{ border-right:1px solid #0047AB;/*產生一個右邊的實心線邊框*/
+      float: left; background-color:#0047AB; }
+
+    #menulist a{ font-size:18px;color: #ffffff; display: block;/*元素會以區塊方式呈現*/
+                text-decoration: none;/*無額外文字特效*/ width:152px;text-align:center;/*文字置中*/
+                line-height: 22px;/* 設定文字行距 */ }
+
+    #menulist li ul{
+      position: absolute; /* 位置是絕對位置 */
+      left: auto; /* 對於絕對位置元素,會依內容需要的寬度來設置 */
+      width: 140px;
+    }
+    
+    .active{ background: #ff0000; }
+
+    #content1{ width: 100%; min-height:501px; background-color:#000000; position: relative; top:40px; }
+    #content1-left{ width:891px;float:left;margin-left:-100px}
+    #content1-right{ width:295px;background-color:#FFBF00;float:left;margin-left:30px}
+
+    #content1-right-up img{
+    padding-top: 0;
+    padding-left: 15px;
+    width:90%;
+    }
+
+    #content1-right-center img{
+    padding-top: 8px;
+    padding-left: 15px;
+    width:90%;
+    }
+
+    #content1-right-down img{
+    padding-top:20px;
+    padding-left: 15px;
+    width:90%;
+    }
+
+    #content1-right-up{ width:295px;min-height:167px;background-color:#000000;float:left;}
+    #content1-right-center{ width:295px;min-height:167px;background-color:#000000;float:left;}
+    #content1-right-down{ width:295px;min-height:167px;background-color:#000000;float:left;}
+
+   
+   /* * 意思 是說 裡面html 的標籤都適用 */
+   /* 輪播圖片style */
+   *{
+         margin:0px;
+         list-style: none;
+        padding:0px;
+      }
+      .banner{
+         width:889px;
+         height:500px;
+         margin:100px auto;
+         border:1px solid #ccc;
+         position:relative;  /* 定位屬性*/
+         top:-100px;
+         overflow:hidden;  /*超過了就隱藏*/
+      }
+
+      .banner .img{
+         width:8910px;
+         position:absolute;
+         left:0px;
+         top:0px;
+      }
+      .banner .img img{
+         width:891px;    
+         height:501px;
+         /*圖片的寬高 要跟banner*/
+      }
+
+      .banner .img li{
+         float:left;
+      }
+
+      .banner .btn {
+         width:30px;
+         height:50px;
+         background-color: #ccc;
+
+         /*透明度寫法*/
+         opacity: 0.5;
+         filter:alpha(opacity:0.5);
+         position: absolute;
+         top:50%;
+         margin-top:-25px;
+
+         /*字型顏色*/
+         cursor: pointer;  /* cursor 是用來改變滑鼠游標的形狀  pointer 手指去點的圖示*/
+         text-align: center;
+         line-height: 50px;
+         font-size: 50px;
+         color:#fff;
+         display:none;
+      }
+
+      .banner .left{
+         left:0px;
+      }
+      .banner .right{
+         right:0px;
+      }
+      .banner:hover .btn{
+         display:block;
+      }
+ 
+  </style>
+
+
+   <script> /*子選單區塊*/
+      $(document).ready( function() {
+         $("#menulist li ui").hide();
+         $("#menulist li").hover(        
+            function(){
+              $(this).find("ul").slideDown("fast");
+              $(this).find("a:first").slideDown("active");
+            },function(){
+              $(this).find(".submenu").fadeOut("fast");
+              $(this).find("a").removeClass("active");
+            }
+          )
+      });
+   </script>
+
+
+   <script>//圖片輪播腳本
+      $(document).ready(function(){
+
+         var i = 0;
+         var clone = $(".banner .img li").first().clone();  //複製第一張圖片
+         $(".banner .img").append(clone);  // 將複製的第一張貼到最後面去
+
+         var size = $(".banner .img li").size();  //抓個數
+
+
+         /*自動播放*/
+         // setInterval 會不斷的呼叫函數   ，2秒呼叫一次
+         var t = setInterval(function(){
+            i++;
+            move();
+         },2000);
+
+         function move(){
+            if ( i == size){
+               $(".banner .img").css({left:0});
+               i=1;
+            }
+            if (i == -1){
+               $(".banner .img").css({left:-(size -1) * 891});
+               i = size - 5;
+            }
+            $(".banner .img").stop().animate({left:-i * 891},891);
+            /* 動畫 ，往左邊拉-500 px  , 會隨著 i 改變，而越拉越多*/
+         }
+
+
+        /*此區域被滑鼠移入時*/
+        $(".banner").hover(function(){
+            clearInterval(t) ; // 清除計時器
+          },
+          function(){  // 滑鼠移出
+            t = setInterval(function(){
+              i++;
+              move();
+            },2000);
+        });
+
+        $(".banner .left").click(function(){
+          i++;    // i 每次都加1
+          move();
+        })
+
+        $(".banner .right").click(function(){
+          i--;  // -- 每次都減1
+          move();
+        })
+      });
+    </script>
+
+
+</head>
+
+<body>
+   <div id="logo">
+      <div class="logo_info">
+         <a href="https://www.samsung.com/tw/" target="_blank"><img src="img/samsung.jpg"></a>
+      </div>
+   </div>
+
+   <div id="menu">
+       <ul id="menulist">
+          
+          <li><a href="https://www.samsung.com/tw/about-us/ethics/" target="_blank">關於三星</a>
+
+          <li><a href="https://www.samsung.com/tw/smartphones/galaxy-z-fold4/" target="_blank">Galaxy Z Fold4</a>
+              <ul class="submenu">
+                 <li><a href="https://www.cool3c.com/article/181396" target="_blank">手機實測一</a></li>
+                 <li><a href="https://www.computerdiy.com.tw/samsung-galaxy-z-flip4/" target="_blank">手機實測二</a></li>
+                 <li><a href="https://m.eprice.com.tw/mobile/talk/4523/5744647/1/rv/samsung-galaxy-z-fold-4-12gb-plus-1tb-review/" target="_blank">手機實測三</a></li>
+                 <li><a href="https://www.pcmarket.com.hk/samsung-galaxy-z-fold4-handson-review/" target="_blank">手機實測四</a></li>
+              </ul>
+          </li>
+
+           <li><a href="https://www.samsung.com/tw/smartphones/galaxy-z-flip4/" target="_blank">Galaxy Z Flip4</a>
+              <ul class="submenu">
+                 <li><a href="https://www.cool3c.com/article/181285" target="_blank">手機實測一</a></li>
+                 <li><a href="https://www.eprice.com.tw/mobile/talk/4523/5746158/1/rv/samsung-galaxy-z-flip-4-8gb-plus-128gb-review" target="_blank">手機實測二</a></li>          
+                 <li><a href="https://www.esquirehk.com/gear/samsung-galaxy-z-flip-4-unbox" target="_blank">手機實測三</a></li>
+                 <li><a href="https://www.techbang.com/posts/99039-samsung" target="_blank">手機實測四</a></li>
+              </ul>
+           </li>
+
+           <li><a href="https://www.samsung.com/tw/smartphones/galaxy-s/" target="_blank">Galaxy S22 series</a>
+              <ul class="submenu">
+                 <li><a href="https://ahui3c.com/114865/s22-p" target="_blank">手機實測一</a></li>
+                 <li><a href="https://www.samsung.com/tw/explore/entertainment/completely-s22-unboxing/" target="_blank">手機實測二</a></li>
+                 <li><a href="https://dacota.tw/blog/post/samsung-galaxy-s22" target="_blank">手機實測三</a></li>
+                 <li><a href="https://myfone.blog/samsung-galaxy-s22-ultra-smartphone-unbox/" target="_blank">手機實測四</a></li>
+              </ul>
+           </li>
+
+          <li><a href="https://www.samsung.com/tw/smartphones/galaxy-a/galaxy-a53-5g-awesome-peach-256gb-sm-a5360zolbri/" target="_blank">Galaxy A53</a>
+              <ul class="submenu">
+                 <li><a href="https://axiang.cc/archives/73485" target="_blank">手機實測一</a></li>
+                 <li><a href="https://www.landtop.com.tw/reviews/130" target="_blank">手機實測二</a></li>
+                 <li><a href="https://m.eprice.com.tw/mobile/talk/4523/5716814/1/rv/samsung-galaxy-a53-5g-8gb_128gb-review/" target="_blank">手機實測三</a></li>
+                 <li><a href="https://www.iwaishin.com/samsung-galaxy-a53-5g-review/" target="_blank">手機實測四</a></li>
+              </ul>
+           </li>
+
+           <li><a href="https://www.samsung.com/tw/tablets/galaxy-tab-a/" target="_blank">Galaxy Tab A8</a>
+              <ul class="submenu">
+                 <li><a href="https://www.sogi.com.tw/articles/samsung_galaxy_tab_a8_wifi_lte/6257381" target="_blank">平板實測一</a></li>
+                 <li><a href="https://myfone.blog/samsung-galaxy-tab-a8-introduction/" target="_blank">平板實測二</a></li>
+                 <li><a href="https://3cinfor.com/2021/12/22/samsung-galaxy-tab-a8/" target="_blank">平板實測三</a></li>
+                 <li><a href="https://www.nova.com.tw/article/ej/content/61baf6bb8e0a1" target="_blank">平板實測四</a></li>
+              </ul>
+           </li>
+
+          <li><a href="https://www.samsung.com/tw/support/email/" target="_blank">三星客服信箱</a>
+          <li><a href="https://www.samsung.com/tw/support/contact/#contactinfo" target="_blank">聯絡三星</a>
+
+        </ul> 
+
+   <div id="content1">
+
+      <div id="content1-left">
+         <div class="banner">
+            <ul class="img">
+               <li><img src="img/scroll/Galaxy Z Fold4.png"></li>
+               <li><img src="img/scroll/Galaxy Z Flip4.png"></li>
+               <li><img src="img/scroll/Galaxy S22 Ultra.jpg"></li>
+               <li><img src="img/scroll/Galaxy S22  Plus & S22.jpg"></li>
+               <li><img src="img/scroll/Galaxy A53.jpg"></li>
+               <li><img src="img/scroll/Galaxy Tab A8.jpg"></li>
+            </ul>
+         <div class="btn left">&lt;</div>
+         <div class="btn right">&gt;</div>
+         </div>
+      </div>
+
+      <div id="content1-right">
+         <div id="content1-right-up">
+            <a href="https://news.samsung.com/tw/2022-z-series-launch" target="_blank"><img src="img/news_Galaxy Z Fold4 & Z Flip4.jpg"></a>
+            <div style="border:2px write solid;width:220px;margin-top:-50px;margin-left:30px;"><b><font color="blue">世界由你展開！Galaxy Z Fold4｜Z Flip4摺疊旗艦 個性登台</font></b></div>
+         </div>
+         <div id="content1-right-center">
+            <a href="https://news.samsung.com/tw/infographic-galaxy-z-fold4-the-multitasking-powerhouse-built-to-enhance-your-productivity" target="_blank"><img src="img/news_Galaxy Z Fold4.jpg"></a>
+            <div style="border:2px write solid;width:220px;margin-top:-50px;margin-left:30px;"><b><font color="blue">【圖表解析】Galaxy Z Fold4：釋放生產力的多工神器</font></b></div>
+         </div>
+         <div id="content1-right-down">
+            <a href="https://news.samsung.com/tw/infographic-galaxy-z-flip4-the-ultimate-tool-for-self-expression" target="_blank"><img src="img/news_Galaxy Z Flip4.jpg"></a>
+            <div style="border:2px write solid;width:220px;margin-top:-50px;margin-left:30px;"><b><font color="blue">【圖表解析】Galaxy Z Flip4：終極自我表達工具</font></b></div>
+         </div>   
+      </div>
+
+   </div>
+   
+
+</body>
+</html>
