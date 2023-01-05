@@ -1,0 +1,57 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		{% block pageTitle %}
+		{% endblock %}
+	</title>
+
+	<link href="/static/css/index.css" rel="stylesheet">
+
+	{% block css %}
+	{% endblock %}
+
+	{% block js %}
+	{% endblock %}
+
+</head>
+<body>
+
+	<div id="wrapper">
+
+		<div id="banner">
+
+			<div id="logo">
+			</div>
+			<div id="menu">
+				<ul class="bannermenu">
+					<a href="/abouts"><li class="menutxt">關於認知障礙(失智)</li></a>
+					<a href="/news"><li class="menutxt">新聞時事</li></a>
+					<a href="/ebookbuy"><li class="menutxt">電子書</li></a>
+					<a href="/bookbuy"><li class="menutxt">紙本書</li></a>
+					<a href="/onlinemedia"><li class="menutxt">線上影片</li></a>
+				</ul>
+			</div>
+
+		</div>
+
+		<div id="ad">
+			<img src="/static/images/ad.jpg" >
+		</div>
+
+		<div id="content">
+
+			{% block mainContent %}
+			{% endblock %}
+
+			<div id="footer">
+		         <span>COPYRIGHT ©2023 TSUNGAN DESGIN.  ALL RIGHTS RESERVED.</span>
+	        </div>
+
+		</div>
+	</div>
+
+	
+
+</body>
+</html>

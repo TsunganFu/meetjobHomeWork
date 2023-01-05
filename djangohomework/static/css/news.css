@@ -1,0 +1,36 @@
+
+.newsArea{
+	float:left;
+	padding:1%;
+	width:20%;
+	height:340px;
+	margin: 5px;
+	background-color: #E6CFE6;
+	border-radius:20px
+}
+
+.newsImg{
+	float:left;
+	width:100%;
+}
+
+.newsImg img{
+	width: 100%;
+	height:220px;
+}
+
+.newsTitle{
+	float:left;
+	width:100%;
+}
+
+.newsTitle p{
+    font-family: 微軟正黑體,sans-serif,Arial;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#content{
+	margin-left: 10%;
+}
+

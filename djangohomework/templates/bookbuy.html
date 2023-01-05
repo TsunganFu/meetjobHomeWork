@@ -1,0 +1,53 @@
+{% extends "BasePage.html" %}
+
+{% block pageTitle %}
+紙本書 Book
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="/static/css/bookbuy.css" />
+{% endblock %}
+
+{% block mainContent %}
+
+<div style="background-color:pink;width:190px;border-radius:15px"><font size="6"><b>紙本書 Book</b></font></div>
+
+	{% for item in bookbuyList %}
+
+		<div class="bookbuyArea">
+
+			<div class="bookbuyImg">
+				{% if item.photo|length > 10 %}
+					<img src="{{item.photo}}">
+				{% else %}
+					<img src="/static/images/bookbuy.jpg">
+				{% endif %}
+			</div>
+			<div class="bookbuyTitle">
+				<!-- <p>{{item.title}}</p> -->
+				<a href="{{item.link}}" target="_blank"><p>{{item.title}}</p></a>
+			</div>
+
+		</div>
+
+	{% endfor %}
+
+
+	<div style="clear:both;height:60px;padding-top:100px;text-align: center;">
+
+		{% if bookbuyList.has_previous %}
+
+			<a href="?page={{bookbuyList.previous_page_number}}"><i><b><font color="#0D33FF">上一頁</font></b></i></a>
+
+		{% endif %}
+
+		{% if bookbuyList.has_next %}
+
+			<a href="?page={{bookbuyList.next_page_number}}"><i><b><font color="#0D33FF">下一頁</font></b></i></a>
+
+		{% endif %}
+
+	</div>
+
+
+{% endblock %}

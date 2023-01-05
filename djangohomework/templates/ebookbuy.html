@@ -1,0 +1,53 @@
+{% extends "BasePage.html" %}
+
+{% block pageTitle %}
+電子書 Ebook 
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="/static/css/ebookbuy.css" />
+{% endblock %}
+
+{% block mainContent %}
+
+<div style="background-color:pink;width:210px;border-radius:15px"><font size="6"><b>電子書 Ebook</b></font></div>
+
+	{% for item in ebookbuyList %}
+
+		<div class="ebookbuyArea">
+
+			<div class="ebookbuyImg">
+				{% if item.photo|length > 10 %}
+					<img src="{{item.photo}}">
+				{% else %}
+					<img src="/static/images/ebookbuy.jpg">
+				{% endif %}
+			</div>
+			<div class="ebookbuyTitle">
+				<!-- <p>{{item.title}}</p> -->
+				<a href="{{item.link}}" target="_blank"><p>{{item.title}}</p></a>
+			</div>
+
+		</div>
+
+	{% endfor %}
+
+
+	<div style="clear:both;height:60px;padding-top:100px;text-align: center;">
+
+		{% if ebookbuyList.has_previous %}
+
+			<a href="?page={{ebookbuyList.previous_page_number}}"><i><b><font color="#0D33FF">上一頁</font></b></i></a>
+
+		{% endif %}
+
+		{% if ebookbuyList.has_next %}
+
+			<a href="?page={{ebookbuyList.next_page_number}}"><i><b><font color="#0D33FF">下一頁</font></b></i></a>
+
+		{% endif %}
+
+	</div>
+
+
+{% endblock %}
