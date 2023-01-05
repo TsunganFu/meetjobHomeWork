@@ -1,0 +1,14 @@
+專案名稱:djangohomework
+
+django後台登入
+帳號:tsungan
+密碼:kuoerh20140922
+
+mysql資料庫登入
+1. 名稱:root
+    密碼:123456789
+2. 名稱:myuser
+   密碼:lcclcc
+
+python版本:3.9
+python虛擬環境名稱:django-homework
